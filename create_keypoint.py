@@ -3,15 +3,12 @@ import dlib
 import cv2
 import json
 
-# Создаем детектор лиц
+
 face_detector = dlib.get_frontal_face_detector()
-# Создаем предиктор для поиска ключевых точек
 shape_predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
-# Папка с изображениями
 images_folder = "reference_images"
 
-# Создаем папку для сохранения ключевых точек
 keypoints_folder = "keypoints"
 if not os.path.exists(keypoints_folder):
     os.makedirs(keypoints_folder)
@@ -20,7 +17,6 @@ if not os.path.exists(keypoints_folder):
 for i, filename in enumerate(os.listdir(images_folder), start=1):
     image_path = os.path.join(images_folder, filename)
 
-    # Загружаем изображение
     image = cv2.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
